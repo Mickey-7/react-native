@@ -1,0 +1,147 @@
+error encountered:
+
+C:\Users\donat\Documents\AwesomeProject>npx react-native run-android
+info Running jetifier to migrate libraries to AndroidX. You can disable it using "--no-jetifier" flag.
+Jetifier found 871 file(s) to forward-jetify. Using 12 workers...
+info Starting JS server...
+'adb' is not recognized as an internal or external command,
+operable program or batch file.
+info Launching emulator...
+error Failed to launch emulator. Reason: No emulators found as an output of `emulator -list-avds`.
+warn Please launch an emulator manually or connect a device. Otherwise app may fail to launch.
+info Installing the app...
+
+> Task :app:installDebug
+Installing APK 'app-debug.apk' on 'Pixel_2_API_30(AVD) - 11' for app:debug
+Installed on 1 device.
+
+BUILD SUCCESSFUL in 9s
+31 actionable tasks: 2 executed, 29 up-to-date
+info Connecting to the development server...
+warn Failed to connect to development server using "adb reverse": spawnSync adb ENOENT
+info Starting the app...
+'adb' is not recognized as an internal or external command,
+operable program or batch file.
+error Failed to start the app.
+Error: Command failed: adb shell am start -n com.awesomeproject/com.awesomeproject.MainActivity
+    at makeError (C:\Users\donat\Documents\AwesomeProject\node_modules\execa\index.js:174:9)    
+    at Function.module.exports.sync (C:\Users\donat\Documents\AwesomeProject\node_modules\execa\index.js:338:15)
+    at tryLaunchAppOnDevice (C:\Users\donat\Documents\AwesomeProject\node_modules\@react-native-community\cli-platform-android\build\commands\runAndroid\tryLaunchAppOnDevice.js:58:22)
+    at C:\Users\donat\Documents\AwesomeProject\node_modules\@react-native-community\cli-platform-android\build\commands\runAndroid\runOnAllDevices.js:116:39
+    at Array.forEach (<anonymous>)
+    at runOnAllDevices (C:\Users\donat\Documents\AwesomeProject\node_modules\@react-native-community\cli-platform-android\build\commands\runAndroid\runOnAllDevices.js:114:48)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async Command.handleAction (C:\Users\donat\Documents\AwesomeProject\node_modules\react-native\node_modules\@react-native-community\cli\build\index.js:192:9)
+info Run CLI with --verbose flag for more details.
+
+C:\Users\donat\Documents\AwesomeProject>
+
+
+solution :
+
+https://stackoverflow.com/questions/20564514/adb-is-not-recognized-as-an-internal-or-external-command-operable-program-or
+
+Add your path into environment variable "PATH" where you installed your sdk with below:
+
+\Sdk\platform-tools
+
+-see word document for reference
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------
+
+error encountered:
+
+C:\Users\donat\Documents\AwesomeProject>npx react-native run-android
+info Running jetifier to migrate libraries to AndroidX. You can disable it using "--no-jetifier" flag.
+Jetifier found 871 file(s) to forward-jetify. Using 12 workers...
+info Starting JS server...
+info Installing the app...
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Could not determine the dependencies of task ':app:compileDebugJavaWithJavac'.
+> SDK location not found. Define location with an ANDROID_SDK_ROOT environment variable or by setting the sdk.dir path in your project's local properties file at 'C:\Users\donat\Documents\AwesomeProject\android\local.properties'.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 6s
+
+error Failed to install the app. Make sure you have the Android development environment set up: 
+https://reactnative.dev/docs/environment-setup.
+Error: Command failed: gradlew.bat app:installDebug -PreactNativeDevServerPort=8081
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Could not determine the dependencies of task ':app:compileDebugJavaWithJavac'.
+> SDK location not found. Define location with an ANDROID_SDK_ROOT environment variable or by setting the sdk.dir path in your project's local properties file at 'C:\Users\donat\Documents\AwesomeProject\android\local.properties'.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 6s
+
+    at makeError (C:\Users\donat\Documents\AwesomeProject\node_modules\execa\index.js:174:9)    
+    at C:\Users\donat\Documents\AwesomeProject\node_modules\execa\index.js:278:16
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async runOnAllDevices (C:\Users\donat\Documents\AwesomeProject\node_modules\@react-native-community\cli-platform-android\build\commands\runAndroid\runOnAllDevices.js:106:5)
+    at async Command.handleAction (C:\Users\donat\Documents\AwesomeProject\node_modules\react-native\node_modules\@react-native-community\cli\build\index.js:192:9)
+info Run CLI with --verbose flag for more details.
+
+C:\Users\donat\Documents\AwesomeProject>
+
+solution:
+
+define the SDK on environment variables - see word document for reference
+
+Control Panel\User Accounts\User Accounts\Change my environment variables
+
+New
+
+variable name : ANDROID_HOME
+variable value : C:\Users\donat\AppData\Local\Android\Sdk
+
+Ok
+
+Restart android studio then open android folder on the created 
+react-native app then Tools -> AVD Manager and start emulator 
+
+Go back to visual studio code then open termianl then run npx react-native run-android
+
+
+or
+
+https://stackoverflow.com/questions/27620262/sdk-location-not-found-define-location-with-sdk-dir-in-the-local-properties-fil
+
+define the sdk on the created react-native app
+
+Please follow below steps it work's for me:
+
+Go to your react-native Project then go to android directory Create a file with following name:
+local.properties
+
+Open the file and paste your Android SDK path like below:
+For windows users:
+
+sdk.dir=C:\\Users\\UserName\\AppData\\Local\\Android\\Sdk
+
+Restart android studio then open android folder on the created 
+react-native app then Tools -> AVD Manager and start emulator 
+
+Go back to visual studio code then open termianl then run npx react-native run-android
