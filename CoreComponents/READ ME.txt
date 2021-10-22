@@ -1,0 +1,19 @@
+reference:
+
+React Native Tutorial #3 - Views, Text & Styles
+https://www.youtube.com/watch?v=_YydVvnjNFE&list=PL4cUxeGkcC9ixPU-QkScoRBVxtPPzVjrQ&index=3
+
+React Native Tutorial #4 - Using State
+https://www.youtube.com/watch?v=1FiIYaRr148&list=PL4cUxeGkcC9ixPU-QkScoRBVxtPPzVjrQ&index=4
+
+React Native Tutorial #5 - Text Inputs
+https://www.youtube.com/watch?v=c9Sg9jDitm8&list=PL4cUxeGkcC9ixPU-QkScoRBVxtPPzVjrQ&index=5
+
+React Native Tutorial #6 - Lists & ScrollView
+https://www.youtube.com/watch?v=W-pg1r6-T0g&list=PL4cUxeGkcC9ixPU-QkScoRBVxtPPzVjrQ&index=6
+
+React Native Tutorial #7 - Flat List Component
+https://www.youtube.com/watch?v=iMCM1NceGJY&list=PL4cUxeGkcC9ixPU-QkScoRBVxtPPzVjrQ&index=7
+
+React Native Tutorial #8 - Touchable Components
+https://www.youtube.com/watch?v=QhX25YGf8qg

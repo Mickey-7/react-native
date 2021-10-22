@@ -1,3 +1,21 @@
+create react native app:
+
+npx react-native init Project_Name
+
+run react native app:
+
+npx react-native run-android
+
+-----------------------------------------------------------------------
+
+open emulator on android studio for react native app
+
+open android studio
+open android folder of the created react native app using android studio
+Tools -> AVD Manager -> Run
+
+-----------------------------------------------------------------------
+
 error encountered:
 
 C:\Users\donat\Documents\AwesomeProject>npx react-native run-android
