@@ -1,0 +1,16 @@
+reference :
+
+
+React Native Tutorial #9 - Todo App (part 1)
+https://www.youtube.com/watch?v=uLHFPt9B2Os
+
+
+React Native Tutorial #14 - Flexbox Basics
+https://www.youtube.com/watch?v=R2eqAgR_KlU
+
+
+React Native Tutorial #15 - Icons & More Flexbox
+https://www.youtube.com/watch?v=C4ikFaP0a5o
+
+
+
