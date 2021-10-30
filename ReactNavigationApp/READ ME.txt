@@ -1,0 +1,138 @@
+reference:
+https://dev.to/harshil1712/using-react-navigation-with-functional-components-1d7i
+
+install react-navigation:
+
+C:\Users\donat\Documents\ReactNavigationApp>npm i react-navigation 
+npm WARN jscodeshift@0.11.0 requires a peer of @babel/preset-env@^7.1.6 but none is installed. You must install peer dependencies yourself.
+npm WARN tsutils@3.21.0 requires a peer of typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta 
+but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ react-navigation@4.4.4
+added 14 packages from 6 contributors and audited 1058 packages in 9.086s
+
+78 packages are looking for funding
+  run `npm fund` for details       
+
+found 16 vulnerabilities (4 moderate, 12 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+C:\Users\donat\Documents\ReactNavigationApp>
+
+
+
+encountered error:
+If you are sure the module exists, try these steps:
+ 1. Clear watchman watches: watchman watch-del-all
+ 2. Delete node_modules and run yarn install
+ 3. Reset Metro's cache: yarn start --reset-cache
+ 4. Remove the cache: rm -rf /tmp/metro-*
+  3 | import * as React from 'react';
+  4 | import { ScrollView, Platform, FlatList, SectionList, RefreshControl } from 'react-native';
+> 5 | import { ScrollView as GHScrollView } from 'react-native-gesture-handler';
+    |                                             ^
+  6 | import createNavigationAwareScrollable from './createNavigationAwareScrollable';
+  7 | import invariant from './utils/invariant';
+  8 | let WrappedScrollView;
+    at ModuleResolver.resolveDependency (C:\Users\donat\Documents\ReactNavigationApp\node_modules\metro\src\node-haste\DependencyGraph\ModuleResolution.js:129:15)
+    at DependencyGraph.resolveDependency (C:\Users\donat\Documents\ReactNavigationApp\node_modules\metro\src\node-haste\DependencyGraph.js:288:43)
+    at Object.resolve (C:\Users\donat\Documents\ReactNavigationApp\node_modules\metro\src\lib\transformHelpers.js:129:24)
+    at resolve (C:\Users\donat\Documents\ReactNavigationApp\node_modules\metro\src\DeltaBundler\traverseDependencies.js:396:33)
+    at C:\Users\donat\Documents\ReactNavigationApp\node_modules\metro\src\DeltaBundler\traverseDependencies.js:412:26
+    at Array.reduce (<anonymous>)
+    at resolveDependencies (C:\Users\donat\Documents\ReactNavigationApp\node_modules\metro\src\DeltaBundler\traverseDependencies.js:411:33)
+    at processModule (C:\Users\donat\Documents\ReactNavigationApp\node_modules\metro\src\DeltaBundler\traverseDependencies.js:140:31)
+    at async addDependency (C:\Users\donat\Documents\ReactNavigationApp\node_modules\metro\src\DeltaBundler\traverseDependencies.js:230:18)
+    at async Promise.all (index 6)
+
+
+
+solution:
+
+
+install react-native-gesture-handler:
+
+C:\Users\donat\Documents\ReactNavigationApp>npm i react-native-gesture-handler 
+npm WARN jscodeshift@0.11.0 requires a peer of @babel/preset-env@^7.1.6 but none is installed. You must install peer dependencies yourself.
+npm WARN tsutils@3.21.0 requires a peer of typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta 
+but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ react-native-gesture-handler@1.10.3
+added 9 packages from 131 contributors and audited 1068 packages in 5.724s
+
+79 packages are looking for funding
+  run `npm fund` for details
+
+found 16 vulnerabilities (4 moderate, 12 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+
+error encountered:
+
+failing to install the above module
+
+C:\Users\donat\Documents\ReactNavigationApp>npm install react-native-gesture-handler    
+npm WARN jscodeshift@0.11.0 requires a peer of @babel/preset-env@^7.1.6 but none is installed. You must install peer dependencies yourself.
+npm WARN tsutils@3.21.0 requires a peer of typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta 
+but none is installed. You must install peer dependencies yourself.
+
+npm ERR! code EPERM
+npm ERR! syscall rename
+npm ERR! path C:\Users\donat\Documents\ReactNavigationApp\node_modules\.staging\cross-fetch-a66a6b91
+npm ERR! dest C:\Users\donat\Documents\ReactNavigationApp\node_modules\cross-fetch
+npm ERR! errno -4048
+npm ERR! Error: EPERM: operation not permitted, rename 'C:\Users\donat\Documents\ReactNavigationApp\node_modules\.staging\cross-fetch-a66a6b91' -> 'C:\Users\donat\Documents\ReactNavigationApp\node_modules\cross-fetch'
+npm ERR!  [OperationalError: EPERM: operation not permitted, rename 'C:\Users\donat\Documents\ReactNavigationApp\node_modules\.staging\cross-fetch-a66a6b91' -> 'C:\Users\donat\Documents\ReactNavigationApp\node_modules\cross-fetch'] {
+npm ERR!   cause: [Error: EPERM: operation not permitted, rename 'C:\Users\donat\Documents\ReactNavigationApp\node_modules\.staging\cross-fetch-a66a6b91' -> 'C:\Users\donat\Documents\ReactNavigationApp\node_modules\cross-fetch'] {
+npm ERR!     errno: -4048,
+npm ERR!     code: 'EPERM',
+npm ERR!     syscall: 'rename',
+npm ERR!     path: 'C:\\Users\\donat\\Documents\\ReactNavigationApp\\node_modules\\.staging\\cross-fetch-a66a6b91',
+npm ERR!     dest: 'C:\\Users\\donat\\Documents\\ReactNavigationApp\\node_modules\\cross-fetch' 
+npm ERR!   },
+npm ERR!   errno: -4048,
+npm ERR!   code: 'EPERM',
+npm ERR!   syscall: 'rename',
+npm ERR!   path: 'C:\\Users\\donat\\Documents\\ReactNavigationApp\\node_modules\\.staging\\cross-fetch-a66a6b91',
+npm ERR!   dest: 'C:\\Users\\donat\\Documents\\ReactNavigationApp\\node_modules\\cross-fetch',  
+npm ERR!   parent: 'ReactNavigationApp'
+npm ERR! }
+npm ERR!
+npm ERR! The operation was rejected by your operating system.
+npm ERR! It's possible that the file was already in use (by a text editor or antivirus),        
+npm ERR! or that you lack permissions to access it.
+npm ERR!
+npm ERR! If you believe this might be a permissions issue, please double-check the
+npm ERR! permissions of the file and its containing directories, or try running
+npm ERR! the command again as root/Administrator.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\donat\AppData\Roaming\npm-cache\_logs\2021-10-30T04_59_47_117Z-debug.log  
+
+
+solution:
+
+
+reinstall react-native-gesture-handler again:
+
+C:\Users\donat\Documents\ReactNavigationApp>npm install react-native-gesture-handler 
+npm WARN jscodeshift@0.11.0 requires a peer of @babel/preset-env@^7.1.6 but none is installed. You must install peer dependencies yourself.
+npm WARN tsutils@3.21.0 requires a peer of typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta 
+but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ react-native-gesture-handler@1.10.3
+added 9 packages from 131 contributors and audited 1068 packages in 9.107s
+
+79 packages are looking for funding
+  run `npm fund` for details
+
+found 16 vulnerabilities (4 moderate, 12 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+C:\Users\donat\Documents\ReactNavigationApp>
