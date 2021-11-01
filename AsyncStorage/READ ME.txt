@@ -1,0 +1,144 @@
+reference:https://blog.jscrambler.com/how-to-use-react-native-asyncstorage
+
+------------------------------------------------------
+AsyncStorage is a simple, asynchronous, unencrypted by default module that allows you to persist data offline in React Native apps. 
+The persistence of data is done in a key-value storage system.
+
+There are numerous scenarios where this module can be beneficial. 
+Persisting data in a mobile app has benefits such as when the user restarts the app, 
+the data or the setting variables being available to the user in the state they left before closing the app. 
+This scenario is going to be covered in this tutorial.
+
+
+------------------------------------------------------
+Install async-storage
+------------------------------------------------------
+npm install @react-native-async-storage/async-storage
+
+C:\Users\donat\Documents\AsyncStorage>npm install @react-native-async-storage/async-storage
+npm WARN jscodeshift@0.11.0 requires a peer of @babel/preset-env@^7.1.6 but none is installed. You must install peer dependencies yourself.
+npm WARN tsutils@3.21.0 requires a peer of typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\fsevents):      
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ @react-native-async-storage/async-storage@1.15.9
+added 3 packages from 4 contributors and audited 1047 packages in 6.086s
+
+77 packages are looking for funding
+  run `npm fund` for details       
+
+found 16 vulnerabilities (4 moderate, 12 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+C:\Users\donat\Documents\AsyncStorage>
+
+
+
+------------------------------------------------------
+Changing the default storage limitation on Android
+------------------------------------------------------
+On Android devices, the current AsyncStorage size is set to 6MB by default. 
+Reaching this limit is going to result in errors like database or disk is full. 
+There are valid reasons why this limit exists but if there is a need to increase the size, you can do that. 
+Open the android/gradle.properties file and add the following:
+
+android.useAndroidX=true
+android.enableJetifier=true
+// add the below line
+AsyncStorage_db_size_in_MB=10
+
+Now, to make sure everything is working correctly, build the Android app 
+(and make sure an Android device or emulator is running before you execute the command below).
+
+npx react-native run-android
+
+
+------------------------------------------------------
+Using the AsyncStorage API
+------------------------------------------------------
+
+-> App.js
+Define a variable name STORAGE_KEY that is going to read and save the data using the API functions. 
+You can think of this key as the identifier to the value that is being stored, hence the key-value storage system. 
+As you are going to store only one value at the moment, there is only the requirement for one key.
+
+    const STORAGE_KEY = '@save_age'
+
+    //snippet:useS
+    const [age, setAge] = useState('')
+
+    Saving the data
+    To save the data for the app to read, let us define an asynchronous helper method called saveData. 
+    This method is going to be promise-based, thus, you can use the async-await syntax with try-catch block.
+
+    Passing the identifier STORAGE_KEY as well as the age state variable, the API method AsyncStorage.setItem() is going to store the value in storage. 
+    Let us update the state as well as display an alert box when the data is successfully stored.
+
+    //snippet:nfn
+    const saveData = async () => {
+        try {
+            await AsyncStorage.setItem(STORAGE_KEY, age)
+            alert('Data successfully saved')
+        } catch (e) {
+            alert('Failed to save the data to the storage')
+        }
+    }
+
+    Reading the data
+    When the app restarts, it should be able to read the data persisted in the previous section. 
+    For this, create another helper function called readData that is going to be asynchronous. 
+    This function is going to read the value from the storage using the API method 
+    AsyncStorage.getItem and will only save the value of the state variable age when its value is not null.
+    
+    //snippet:nfn
+    const readData = async () => {
+        try {
+            const userAge = await AsyncStorage.getItem(STORAGE_KEY)
+
+            if (userAge !== null) {
+            setAge(userAge)
+            }
+        } catch (e) {
+            alert('Failed to fetch the data from storage')
+        }
+    }
+
+    To retrieve the data whenever the app starts, invoke this method inside the useEffect hook.
+
+    useEffect(() => {
+        readData()
+    }, [])
+
+
+    Clearing all storage
+    The last API method that the current demo app is going to utilize from the AsyncStorage API is called clear(). 
+    This method deletes everything that was previously saved.
+
+    If you want to delete only a specific item from the storage, 
+    there are other methods available such as removeItem or multiRemove by the AsyncStorage API. 
+    Add the following snippet.
+    
+    //snippet:nfn
+    const clearStorage = async () => {
+        try {
+            await AsyncStorage.clear()
+            alert('Storage successfully cleared!')
+        } catch (e) {
+            alert('Failed to clear the async storage.')
+        }
+    }
+
+    Controlling the input
+    The last two helper functions this demo app requires are onChangeText and onSubmitEditing. 
+    These methods are going to be responsible for reading the user input and updating the state variable as well as storing the user's input.
+
+    const onChangeText = userAge => setAge(userAge)
+
+    const onSubmitEditing = () => {
+        if (!age) return
+
+        saveData(age)
+        setAge('')
+    }
+    
+------------------------------------------------------
